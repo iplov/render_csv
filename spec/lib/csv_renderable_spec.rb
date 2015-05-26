@@ -66,4 +66,12 @@ describe RenderCsv::CsvRenderable do
       end
     end
   end
+  
+  context 'object is an array of Hashes' do
+    let(:array) { [{ id: 1, value: 'value_1' }, { id: 2, value: 'value_2' }] }
+    
+    it 'returns all columns' do
+      expect(csv_renderable_array.to_csv).to eql "id,value\n1,value_1\n2,value_2\n"
+    end
+  end
 end
